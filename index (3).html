@@ -1,0 +1,1735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Standout Student Toolkit — CareerGPS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0E1A;
+  --bg-2:#0E1424;
+  --bg-3:#141C30;
+  --ink:#0A0E1A;
+  --ink-2:#1A2340;
+  --paper:#F4F1EA;
+  --paper-2:#E8E3D6;
+  --gold:#F5C518;
+  --gold-2:#E0AE0F;
+  --gold-soft:#FBE89A;
+  --accent:#5B6CFF;
+  --line:rgba(245,197,24,.18);
+  --line-2:rgba(244,241,234,.08);
+  --text:#E8E3D6;
+  --text-dim:#A39E91;
+  --text-faint:#6B6759;
+  --serif:'Fraunces', Georgia, serif;
+  --sans:'Inter', system-ui, sans-serif;
+  --mono:'JetBrains Mono', monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* Noise texture */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+  opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.wrap{max-width:1100px;margin:0 auto;padding:0 32px;position:relative;z-index:2}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:80px 0 60px;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';
+  position:absolute;
+  top:-200px;
+  right:-200px;
+  width:700px;
+  height:700px;
+  background:radial-gradient(circle, rgba(245,197,24,.08) 0%, transparent 70%);
+  border-radius:50%;
+  pointer-events:none;
+}
+.hero::after{
+  content:'';
+  position:absolute;
+  bottom:-300px;
+  left:-150px;
+  width:600px;
+  height:600px;
+  background:radial-gradient(circle, rgba(91,108,255,.06) 0%, transparent 70%);
+  border-radius:50%;
+  pointer-events:none;
+}
+
+.brand-mark{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:48px;
+  position:relative;
+}
+.brand-mark::before{
+  content:'';
+  width:24px;
+  height:1px;
+  background:var(--gold);
+}
+
+.eyebrow{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:24px;
+  display:inline-block;
+  padding:6px 12px;
+  border:1px solid var(--line);
+  border-radius:2px;
+  background:rgba(245,197,24,.04);
+}
+
+h1.title{
+  font-family:var(--serif);
+  font-weight:300;
+  font-size:clamp(48px, 8vw, 96px);
+  line-height:1;
+  letter-spacing:-.03em;
+  color:var(--paper);
+  margin-bottom:24px;
+}
+h1.title em{
+  font-style:italic;
+  font-weight:400;
+  color:var(--gold);
+}
+h1.title .stroke{
+  -webkit-text-stroke:1px var(--paper);
+  -webkit-text-fill-color:transparent;
+  font-weight:600;
+}
+
+.lede{
+  font-family:var(--serif);
+  font-weight:300;
+  font-size:clamp(20px, 2.4vw, 26px);
+  line-height:1.4;
+  color:var(--text-dim);
+  max-width:620px;
+  margin-bottom:48px;
+  font-style:italic;
+}
+
+.hero-stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+  gap:32px;
+  padding:32px 0;
+  border-top:1px solid var(--line-2);
+  border-bottom:1px solid var(--line-2);
+  margin-bottom:48px;
+}
+.stat{padding-right:24px;border-right:1px solid var(--line-2)}
+.stat:last-child{border-right:none}
+.stat-num{
+  font-family:var(--serif);
+  font-size:48px;
+  line-height:1;
+  font-weight:400;
+  color:var(--gold);
+  margin-bottom:8px;
+}
+.stat-label{
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--text-faint);
+}
+
+.scroll-cue{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--text-faint);
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+}
+.scroll-cue::after{
+  content:'';
+  width:60px;
+  height:1px;
+  background:var(--text-faint);
+  animation:pulse 2s ease infinite;
+}
+@keyframes pulse{
+  0%,100%{opacity:.3}
+  50%{opacity:1}
+}
+
+/* SECTION CHROME */
+.section{padding:120px 0;position:relative}
+.section-num{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.2em;
+  color:var(--gold);
+  margin-bottom:16px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.section-num::after{
+  content:'';
+  flex:1;
+  height:1px;
+  background:linear-gradient(to right, var(--line), transparent);
+}
+.section-title{
+  font-family:var(--serif);
+  font-weight:300;
+  font-size:clamp(36px, 5vw, 60px);
+  line-height:1.05;
+  letter-spacing:-.02em;
+  color:var(--paper);
+  margin-bottom:32px;
+  max-width:900px;
+}
+.section-title em{font-style:italic;color:var(--gold);font-weight:400}
+.section-intro{
+  font-family:var(--serif);
+  font-size:18px;
+  line-height:1.7;
+  color:var(--text-dim);
+  max-width:680px;
+  margin-bottom:64px;
+}
+
+/* WHY THIS EXISTS */
+.why-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:64px;
+  margin-top:48px;
+}
+@media(max-width:768px){.why-grid{grid-template-columns:1fr;gap:32px}}
+.why-block{position:relative}
+.why-num{
+  font-family:var(--serif);
+  font-size:120px;
+  line-height:.8;
+  font-weight:300;
+  color:var(--gold);
+  margin-bottom:16px;
+  letter-spacing:-.04em;
+}
+.why-num em{font-style:italic;font-weight:400}
+.why-text{
+  font-family:var(--sans);
+  font-size:15px;
+  line-height:1.7;
+  color:var(--text-dim);
+}
+.why-text strong{color:var(--paper);font-weight:600}
+
+/* NOTE BOX — yellow accent */
+.note{
+  border-left:3px solid var(--gold);
+  background:rgba(245,197,24,.04);
+  padding:24px 28px;
+  margin:40px 0;
+  font-family:var(--serif);
+  font-size:17px;
+  line-height:1.7;
+  color:var(--paper);
+  font-style:italic;
+  position:relative;
+}
+.note-label{
+  display:block;
+  font-family:var(--mono);
+  font-style:normal;
+  font-size:10px;
+  letter-spacing:.2em;
+  color:var(--gold);
+  margin-bottom:8px;
+  text-transform:uppercase;
+}
+
+/* PART 1 — Career Clarity Worksheet */
+.part-header{
+  display:flex;
+  align-items:flex-start;
+  gap:32px;
+  margin-bottom:48px;
+  padding-bottom:32px;
+  border-bottom:1px solid var(--line-2);
+}
+@media(max-width:640px){.part-header{flex-direction:column;gap:16px}}
+.part-num-box{
+  flex-shrink:0;
+  font-family:var(--serif);
+  font-size:96px;
+  line-height:.85;
+  color:var(--gold);
+  font-weight:300;
+}
+.part-num-box em{font-style:italic}
+.part-meta{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--text-faint);
+  margin-bottom:8px;
+}
+.part-title{
+  font-family:var(--serif);
+  font-size:clamp(28px, 4vw, 44px);
+  font-weight:300;
+  line-height:1.1;
+  color:var(--paper);
+  margin-bottom:12px;
+  letter-spacing:-.02em;
+}
+.part-title em{font-style:italic;color:var(--gold);font-weight:400}
+.part-blurb{
+  font-family:var(--serif);
+  font-size:17px;
+  line-height:1.6;
+  color:var(--text-dim);
+  font-style:italic;
+}
+
+.q-block{
+  margin-bottom:32px;
+  padding:28px 0;
+  border-bottom:1px solid var(--line-2);
+}
+.q-num{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.2em;
+  color:var(--gold);
+  margin-bottom:12px;
+}
+.q-text{
+  font-family:var(--serif);
+  font-size:22px;
+  line-height:1.4;
+  color:var(--paper);
+  margin-bottom:8px;
+  font-weight:400;
+}
+.q-hint{
+  font-family:var(--sans);
+  font-size:14px;
+  color:var(--text-faint);
+  font-style:italic;
+  margin-bottom:16px;
+}
+.q-input{
+  width:100%;
+  min-height:90px;
+  background:var(--bg-2);
+  border:1px solid var(--line-2);
+  border-radius:4px;
+  padding:14px 16px;
+  font-family:var(--sans);
+  font-size:15px;
+  color:var(--text);
+  resize:vertical;
+  transition:border-color .2s, background .2s;
+}
+.q-input:focus{
+  outline:none;
+  border-color:var(--gold);
+  background:var(--bg-3);
+}
+.q-input::placeholder{color:var(--text-faint);font-style:italic}
+
+/* PART 2 — Cold Outreach Templates */
+.template{
+  background:var(--bg-2);
+  border:1px solid var(--line-2);
+  border-radius:6px;
+  margin-bottom:24px;
+  overflow:hidden;
+  transition:border-color .2s;
+}
+.template:hover{border-color:var(--line)}
+.template-head{
+  padding:20px 24px;
+  border-bottom:1px solid var(--line-2);
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:16px;
+  flex-wrap:wrap;
+}
+.template-id{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.15em;
+  color:var(--gold);
+  margin-bottom:6px;
+}
+.template-title{
+  font-family:var(--serif);
+  font-size:22px;
+  font-weight:400;
+  color:var(--paper);
+  line-height:1.3;
+  letter-spacing:-.01em;
+}
+.template-when{
+  font-family:var(--sans);
+  font-size:13px;
+  color:var(--text-dim);
+  margin-top:4px;
+}
+.copy-btn{
+  background:transparent;
+  border:1px solid var(--gold);
+  color:var(--gold);
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  padding:8px 14px;
+  border-radius:3px;
+  cursor:pointer;
+  transition:all .2s;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.copy-btn:hover{background:var(--gold);color:var(--ink)}
+.copy-btn.copied{background:var(--gold);color:var(--ink)}
+.template-body{
+  padding:24px;
+  font-family:var(--mono);
+  font-size:13px;
+  line-height:1.7;
+  color:var(--text);
+  white-space:pre-wrap;
+  background:var(--bg);
+  border-radius:0 0 6px 6px;
+}
+.template-body .bracket{color:var(--gold);font-weight:500}
+.template-why{
+  padding:16px 24px;
+  background:rgba(245,197,24,.03);
+  border-top:1px solid var(--line);
+  font-family:var(--sans);
+  font-size:13px;
+  line-height:1.6;
+  color:var(--text-dim);
+  font-style:italic;
+}
+.template-why strong{
+  color:var(--gold);
+  font-style:normal;
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  display:block;
+  margin-bottom:6px;
+}
+
+/* CTA SECTION */
+.cta-section{
+  margin:120px 0 80px;
+  padding:80px 48px;
+  background:linear-gradient(135deg, var(--bg-2) 0%, var(--bg-3) 100%);
+  border:1px solid var(--line);
+  border-radius:8px;
+  position:relative;
+  overflow:hidden;
+}
+.cta-section::before{
+  content:'';
+  position:absolute;
+  top:-100px;
+  right:-100px;
+  width:400px;
+  height:400px;
+  background:radial-gradient(circle, rgba(245,197,24,.08) 0%, transparent 60%);
+  pointer-events:none;
+}
+.cta-eyebrow{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:20px;
+}
+.cta-title{
+  font-family:var(--serif);
+  font-size:clamp(32px, 5vw, 52px);
+  font-weight:300;
+  line-height:1.1;
+  letter-spacing:-.02em;
+  color:var(--paper);
+  margin-bottom:24px;
+  max-width:780px;
+}
+.cta-title em{font-style:italic;color:var(--gold);font-weight:400}
+.cta-text{
+  font-family:var(--serif);
+  font-size:18px;
+  line-height:1.7;
+  color:var(--text-dim);
+  max-width:640px;
+  margin-bottom:40px;
+  font-style:italic;
+}
+.cta-buttons{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:16px 28px;
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  text-decoration:none;
+  border-radius:4px;
+  transition:all .25s;
+  cursor:pointer;
+}
+.btn-primary{
+  background:var(--gold);
+  color:var(--ink);
+  border:1px solid var(--gold);
+  font-weight:600;
+}
+.btn-primary:hover{
+  background:var(--gold-2);
+  border-color:var(--gold-2);
+  transform:translateY(-1px);
+  box-shadow:0 8px 24px rgba(245,197,24,.2);
+}
+.btn-secondary{
+  background:transparent;
+  color:var(--paper);
+  border:1px solid var(--line);
+}
+.btn-secondary:hover{
+  border-color:var(--gold);
+  color:var(--gold);
+}
+.btn-arrow{font-size:14px;letter-spacing:0}
+
+.cta-features{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+  gap:24px;
+  margin-top:48px;
+  padding-top:40px;
+  border-top:1px solid var(--line-2);
+}
+.feat{display:flex;gap:12px;align-items:flex-start}
+.feat-icon{
+  flex-shrink:0;
+  width:24px;
+  height:24px;
+  border:1px solid var(--gold);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--gold);
+  font-family:var(--serif);
+  font-size:12px;
+  margin-top:2px;
+}
+.feat-text{
+  font-family:var(--sans);
+  font-size:13px;
+  line-height:1.5;
+  color:var(--text-dim);
+}
+.feat-text strong{color:var(--paper);font-weight:600;display:block;margin-bottom:2px}
+
+/* INLINE LINK */
+.inline-link{
+  color:var(--gold);
+  text-decoration:none;
+  border-bottom:1px solid var(--line);
+  transition:border-color .2s;
+  font-weight:500;
+}
+.inline-link:hover{border-color:var(--gold)}
+
+/* SECTION DIVIDER */
+.divider{
+  margin:80px 0;
+  text-align:center;
+  position:relative;
+}
+.divider::before{
+  content:'';
+  position:absolute;
+  top:50%;
+  left:0;
+  right:0;
+  height:1px;
+  background:linear-gradient(to right, transparent, var(--line), transparent);
+}
+.divider-mark{
+  position:relative;
+  display:inline-block;
+  background:var(--bg);
+  padding:0 24px;
+  font-family:var(--serif);
+  font-size:24px;
+  color:var(--gold);
+  font-style:italic;
+}
+
+/* FOOTER */
+footer{
+  padding:60px 0 80px;
+  border-top:1px solid var(--line-2);
+  margin-top:80px;
+}
+.footer-grid{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:24px;
+  align-items:flex-end;
+}
+.footer-brand{
+  font-family:var(--serif);
+  font-size:24px;
+  font-weight:400;
+  color:var(--paper);
+}
+.footer-brand em{color:var(--gold);font-style:italic}
+.footer-meta{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.15em;
+  color:var(--text-faint);
+  text-transform:uppercase;
+}
+
+/* REVEAL PREVIEW SECTION */
+.reveal-cta{
+  margin:48px 0 24px;
+  padding:40px 32px;
+  background:linear-gradient(135deg, rgba(245,197,24,.06) 0%, rgba(91,108,255,.04) 100%);
+  border:1px solid var(--line);
+  border-radius:8px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.reveal-cta::before{
+  content:'';
+  position:absolute;
+  top:-80px;
+  left:50%;
+  transform:translateX(-50%);
+  width:300px;
+  height:300px;
+  background:radial-gradient(circle, rgba(245,197,24,.1) 0%, transparent 70%);
+  pointer-events:none;
+}
+.reveal-eyebrow{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:16px;
+  position:relative;
+}
+.reveal-title{
+  font-family:var(--serif);
+  font-size:clamp(24px, 3.5vw, 36px);
+  font-weight:300;
+  font-style:italic;
+  color:var(--paper);
+  margin-bottom:12px;
+  line-height:1.2;
+  position:relative;
+}
+.reveal-title em{color:var(--gold);font-style:italic}
+.reveal-sub{
+  font-family:var(--sans);
+  font-size:14px;
+  color:var(--text-dim);
+  margin-bottom:28px;
+  max-width:520px;
+  margin-left:auto;
+  margin-right:auto;
+  line-height:1.6;
+  position:relative;
+}
+.reveal-btn{
+  background:var(--gold);
+  color:var(--ink);
+  border:none;
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  padding:18px 36px;
+  border-radius:4px;
+  cursor:pointer;
+  transition:all .25s;
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+.reveal-btn:hover{
+  background:var(--gold-2);
+  transform:translateY(-1px);
+  box-shadow:0 8px 24px rgba(245,197,24,.25);
+}
+.reveal-btn:disabled{
+  background:var(--bg-3);
+  color:var(--text-faint);
+  cursor:not-allowed;
+  transform:none;
+  box-shadow:none;
+}
+
+/* RESULT PANEL */
+.result-panel{
+  display:none;
+  margin-top:48px;
+  animation:fadeIn .6s ease;
+}
+.result-panel.show{display:block}
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.result-header{
+  text-align:center;
+  margin-bottom:48px;
+  padding-bottom:32px;
+  border-bottom:1px solid var(--line-2);
+}
+.result-meta{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:16px;
+}
+.result-title{
+  font-family:var(--serif);
+  font-size:clamp(36px, 5vw, 56px);
+  font-weight:300;
+  line-height:1.05;
+  color:var(--paper);
+  letter-spacing:-.02em;
+  margin-bottom:16px;
+}
+.result-title em{color:var(--gold);font-style:italic;font-weight:400}
+.result-archetype{
+  font-family:var(--serif);
+  font-size:clamp(64px, 10vw, 120px);
+  font-weight:300;
+  font-style:italic;
+  color:var(--gold);
+  line-height:.9;
+  margin:24px 0 16px;
+  letter-spacing:-.04em;
+}
+.result-archetype-label{
+  font-family:var(--mono);
+  font-size:13px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--text-dim);
+}
+
+.result-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:32px;
+  margin-bottom:48px;
+}
+@media(max-width:768px){.result-grid{grid-template-columns:1fr;gap:24px}}
+
+.result-card{
+  background:var(--bg-2);
+  border:1px solid var(--line-2);
+  border-radius:6px;
+  padding:28px;
+  position:relative;
+}
+.result-card-label{
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:12px;
+}
+.result-card-title{
+  font-family:var(--serif);
+  font-size:22px;
+  font-weight:400;
+  color:var(--paper);
+  margin-bottom:14px;
+  line-height:1.3;
+  letter-spacing:-.01em;
+}
+.result-card-text{
+  font-family:var(--sans);
+  font-size:14px;
+  line-height:1.7;
+  color:var(--text-dim);
+}
+
+.theme-list{display:flex;flex-direction:column;gap:14px;margin-top:8px}
+.theme-item{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:12px 16px;
+  background:var(--bg);
+  border-radius:4px;
+  border:1px solid var(--line-2);
+}
+.theme-num{
+  font-family:var(--serif);
+  font-size:24px;
+  font-weight:300;
+  font-style:italic;
+  color:var(--gold);
+  min-width:32px;
+}
+.theme-text{
+  font-family:var(--sans);
+  font-size:14px;
+  color:var(--paper);
+  flex:1;
+  line-height:1.4;
+}
+
+.archetype-explanation{
+  background:var(--bg-2);
+  border:1px solid var(--line-2);
+  border-radius:6px;
+  padding:32px;
+  margin-bottom:32px;
+}
+.archetype-tagline{
+  font-family:var(--serif);
+  font-size:18px;
+  font-style:italic;
+  color:var(--paper);
+  line-height:1.6;
+  margin-bottom:20px;
+  border-left:3px solid var(--gold);
+  padding-left:20px;
+}
+.archetype-traits{
+  font-family:var(--sans);
+  font-size:14px;
+  line-height:1.8;
+  color:var(--text-dim);
+}
+.archetype-traits strong{color:var(--paper);font-weight:600}
+
+/* WARNING NOTE — important explanation */
+.scope-note{
+  margin:48px 0;
+  padding:32px;
+  background:rgba(91,108,255,.04);
+  border:1px solid rgba(91,108,255,.2);
+  border-left:3px solid var(--accent);
+  border-radius:0 6px 6px 0;
+}
+.scope-note-label{
+  display:block;
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.2em;
+  color:var(--accent);
+  margin-bottom:12px;
+  text-transform:uppercase;
+}
+.scope-note-title{
+  font-family:var(--serif);
+  font-size:22px;
+  font-weight:400;
+  color:var(--paper);
+  margin-bottom:12px;
+  line-height:1.3;
+  letter-spacing:-.01em;
+}
+.scope-note-text{
+  font-family:var(--sans);
+  font-size:14px;
+  line-height:1.7;
+  color:var(--text-dim);
+}
+.scope-note-text strong{color:var(--paper);font-weight:600}
+
+.next-step{
+  margin-top:32px;
+  padding:36px;
+  background:linear-gradient(135deg, var(--bg-2) 0%, var(--bg-3) 100%);
+  border:1px solid var(--gold);
+  border-radius:6px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.next-step::before{
+  content:'';
+  position:absolute;
+  top:-50px;
+  right:-50px;
+  width:200px;
+  height:200px;
+  background:radial-gradient(circle, rgba(245,197,24,.15) 0%, transparent 70%);
+  pointer-events:none;
+}
+.next-step-label{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:14px;
+  position:relative;
+}
+.next-step-text{
+  font-family:var(--serif);
+  font-size:20px;
+  line-height:1.5;
+  color:var(--paper);
+  margin-bottom:24px;
+  font-style:italic;
+  position:relative;
+  max-width:560px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.next-step-text em{color:var(--gold);font-style:italic;font-weight:400}
+
+/* SECONDARY LINK */
+.alt-link{
+  margin-top:20px;
+  font-family:var(--sans);
+  font-size:13px;
+  color:var(--text-dim);
+}
+.alt-link a{
+  color:var(--gold);
+  text-decoration:none;
+  border-bottom:1px solid var(--line);
+  transition:border-color .2s;
+}
+.alt-link a:hover{border-color:var(--gold)}
+
+/* PRINT STYLES */
+@media print{
+  body{background:white;color:black}
+  body::before{display:none}
+  .copy-btn,.scroll-cue{display:none}
+  .template-body{background:#f5f5f5;color:black}
+  .q-input{background:white;border:1px solid #ccc;color:black}
+  .hero,.section{page-break-inside:avoid}
+}
+
+/* MOBILE */
+@media(max-width:640px){
+  .wrap{padding:0 20px}
+  .hero{padding:60px 0 40px}
+  .section{padding:80px 0}
+  .cta-section{padding:48px 24px;margin:80px 0 60px}
+  .stat{border-right:none;border-bottom:1px solid var(--line-2);padding:0 0 24px}
+  .stat:last-child{border-bottom:none}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="brand-mark">CareerGPS · Free Companion Guide</div>
+
+    <span class="eyebrow">For the Class of 2025 & Beyond</span>
+
+    <h1 class="title">The <em>Standout</em><br>Student <span class="stroke">Toolkit</span></h1>
+
+    <p class="lede">A field guide for the generation that's sending 10 applications, getting 0.78 offers, and wondering if the system is broken.<br>It is. Here's how to step around it.</p>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">10 → 0.78</div>
+        <div class="stat-label">Avg applications per offer, 2025</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">30%</div>
+        <div class="stat-label">Of 2025 grads in their field</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4–6 mo</div>
+        <div class="stat-label">Average job search length</div>
+      </div>
+    </div>
+
+    <span class="scroll-cue">Begin</span>
+  </div>
+</section>
+
+<!-- WHY THIS EXISTS -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-num">01 — Context</div>
+    <h2 class="section-title">Why this guide exists, and <em>why it's free.</em></h2>
+    <p class="section-intro">The Class of 2025 is facing the toughest entry-level job market in over a decade. The standard advice — "tailor your resume, apply on LinkedIn, network harder" — was built for a different economy. It doesn't work anymore. Here's what the numbers actually say.</p>
+
+    <div class="why-grid">
+      <div class="why-block">
+        <div class="why-num"><em>87%</em></div>
+        <p class="why-text"><strong>of resumes never reach a human.</strong> They're filtered by ATS software using keyword matching. The "perfect" resume your career center taught you to write was designed for the 2010s — when humans still read them. Today, applying through a job portal is shouting into the void.</p>
+      </div>
+      <div class="why-block">
+        <div class="why-num"><em>42%</em></div>
+        <p class="why-text"><strong>of grads who can't find a job in their field</strong> have already broadened their search to other industries. Most aren't lacking skills — they're lacking direction. Without clarity on what fits, every application feels like a guess. And recruiters can tell.</p>
+      </div>
+      <div class="why-block">
+        <div class="why-num"><em>64%</em></div>
+        <p class="why-text"><strong>of new grads believe AI is making it harder to land roles.</strong> Entry-level positions are being automated faster than they're being created. The traditional "junior pipeline" is shrinking — which means standing out matters more than ever, and conventional methods matter less.</p>
+      </div>
+      <div class="why-block">
+        <div class="why-num"><em>0.78</em></div>
+        <p class="why-text"><strong>job offers per 10 applications.</strong> That's the 2025 average. Down from 1.13 in 2022. Behind that number: thousands of hours wasted, confidence eroded, anxiety mounting. The answer isn't "apply more." It's "apply differently."</p>
+      </div>
+    </div>
+
+    <div class="note">
+      <span class="note-label">A note from the builder</span>
+      I built CareerGPS because I watched too many friends drift through their twenties unsure what they actually wanted — and pay for it for years. This guide is a stripped-down piece of that thinking. Free, because the cost of getting it wrong is already too high. If it helps, share it. If you want the full personalized version, that's what <a href="https://whop.com/joined/careermasteryhub/" class="inline-link" target="_blank" rel="noopener">CareerGPS</a> is for.
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="wrap"><div class="divider"><span class="divider-mark">§</span></div></div>
+
+<!-- PART ONE: CAREER CLARITY -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-num">02 — Part One</div>
+
+    <div class="part-header">
+      <div class="part-num-box"><em>I</em></div>
+      <div>
+        <div class="part-meta">12 Questions · ~60 Minutes</div>
+        <h3 class="part-title">The Career Clarity <em>Worksheet</em></h3>
+        <p class="part-blurb">Before you write another resume, send another email, or open another job board — answer these. Most people skip this part. That's why most people end up in the wrong place.</p>
+      </div>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Question 01</div>
+      <div class="q-text">What topics do you read about, watch videos on, or think about — even when no one's making you?</div>
+      <div class="q-hint">Not what you should be interested in. What you actually are.</div>
+      <textarea class="q-input" placeholder="Be specific. 'Tech' is too vague. 'How small companies use AI for ops' is useful."></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Question 02</div>
+      <div class="q-text">When was the last time you lost track of time doing something? What were you doing?</div>
+      <div class="q-hint">Flow states are clues. They point to where your attention naturally wants to live.</div>
+      <textarea class="q-input" placeholder="The activity matters more than the outcome. Writing? Building? Convincing? Organizing? Solving?"></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Question 03</div>
+      <div class="q-text">In an ideal week, what does a "good day at work" look like? Not the title — the actual day.</div>
+      <div class="q-hint">Hours alone vs. with people. Deep focus vs. variety. Building things vs. talking to people. The texture matters more than the title.</div>
+      <textarea class="q-input" placeholder="Walk through the morning, midday, and afternoon. What kinds of tasks fill them?"></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Question 04</div>
+      <div class="q-text">What do you want to be the deepest expert at? Or do you want to connect multiple domains?</div>
+      <div class="q-hint">Specialists go vertical. Generalists go horizontal. Both work. Knowing which one you are saves years.</div>
+      <textarea class="q-input" placeholder="Most people are one or the other. Which feels more like you?"></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Question 05</div>
+      <div class="q-text">What kind of problems make you angry, energized, or impatient when you see them done badly?</div>
+      <div class="q-hint">The thing you can't stop noticing or critiquing — that's often where you'd be most useful.</div>
+      <textarea class="q-input" placeholder="Bad design? Inefficient processes? Unclear writing? Underserved communities?"></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Question 06</div>
+      <div class="q-text">What's something you've taught yourself outside of school? Why?</div>
+      <div class="q-hint">Self-directed learning reveals what you actually care about — not what you were assigned.</div>
+      <textarea class="q-input" placeholder="A skill, a topic, a craft — something you pursued without being told to."></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Question 07</div>
+      <div class="q-text">If money and status didn't exist, what would you spend your weeks doing?</div>
+      <div class="q-hint">This is a flawed question, but the answer points somewhere real. Take it seriously, even if the answer feels impractical.</div>
+      <textarea class="q-input" placeholder="Don't filter. The unfiltered answer often contains a clue worth keeping."></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Question 08</div>
+      <div class="q-text">What's something you've already done that surprised people — including yourself?</div>
+      <div class="q-hint">Past evidence of capability you'd otherwise underrate. This is where confidence gets built.</div>
+      <textarea class="q-input" placeholder="A project, a result, a moment where you exceeded what you thought you could do."></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Question 09</div>
+      <div class="q-text">When you imagine yourself at 35, what does your work life look like? Not "successful" — specific.</div>
+      <div class="q-hint">Where do you live? What's your day? Who do you work with? "Doing well" is too vague to aim at.</div>
+      <textarea class="q-input" placeholder="Specificity is everything. A clear picture is a magnet. A vague one is fog."></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Question 10</div>
+      <div class="q-text">What kind of environments drain you? What kind energize you?</div>
+      <div class="q-hint">The wrong environment will break you in the right job. Most career regret is environment regret in disguise.</div>
+      <textarea class="q-input" placeholder="Open offices vs. quiet rooms. Big teams vs. small. Fast-moving vs. methodical. Be honest."></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Question 11</div>
+      <div class="q-text">What's a career path you've quietly considered but dismissed? Why did you dismiss it?</div>
+      <div class="q-hint">The reasons we dismiss things are often inherited, not chosen. Worth examining.</div>
+      <textarea class="q-input" placeholder="Was it your reason — or someone else's? Family expectation? Practicality? Status?"></textarea>
+    </div>
+
+    <div class="q-block">
+      <div class="q-num">Question 12</div>
+      <div class="q-text">If you could only build one skill over the next 3 years, which would compound the most?</div>
+      <div class="q-hint">Not the most interesting. The most leveraged. The one that opens doors to other doors.</div>
+      <textarea class="q-input" placeholder="Writing? Sales? Code? Design? Strategy? Public speaking? Each opens different worlds."></textarea>
+    </div>
+
+    <div class="reveal-cta">
+      <div class="reveal-eyebrow">Step Two</div>
+      <h3 class="reveal-title">Now let's see <em>what your answers say.</em></h3>
+      <p class="reveal-sub">A quick preview based on the patterns in your responses. Not a full analysis — just an opening signal of where your instincts are pointing.</p>
+      <button class="reveal-btn" onclick="runAnalysis()">
+        Reveal My Preview
+        <span style="font-size:14px;letter-spacing:0">→</span>
+      </button>
+    </div>
+
+    <!-- RESULT PANEL — hidden until button click -->
+    <div class="result-panel" id="resultPanel">
+
+      <div class="result-header">
+        <div class="result-meta">Your Preview · Based on 12 responses</div>
+        <div class="result-title">Your dominant<br>orientation is</div>
+        <div class="result-archetype" id="archetypeName">—</div>
+        <div class="result-archetype-label" id="archetypeSubtitle">—</div>
+      </div>
+
+      <div class="archetype-explanation">
+        <div class="archetype-tagline" id="archetypeTagline">—</div>
+        <div class="archetype-traits" id="archetypeTraits">—</div>
+      </div>
+
+      <div class="result-grid">
+        <div class="result-card">
+          <div class="result-card-label">Themes that surfaced</div>
+          <div class="result-card-title">Patterns in your responses</div>
+          <div class="result-card-text">The words and ideas that came up most often across your answers — these are clues to what your attention naturally moves toward.</div>
+          <div class="theme-list" id="themeList">—</div>
+        </div>
+
+        <div class="result-card">
+          <div class="result-card-label">What this preview tells you</div>
+          <div class="result-card-title">A starting direction — not a destination</div>
+          <div class="result-card-text" id="archetypeAdvice">—</div>
+        </div>
+      </div>
+
+      <!-- IMPORTANT SCOPE NOTE -->
+      <div class="scope-note">
+        <span class="scope-note-label">Important — read this</span>
+        <h4 class="scope-note-title">This preview only looks at 5 broad orientations. The real analysis goes much deeper.</h4>
+        <p class="scope-note-text">What you just saw is a <strong>simplified preview</strong> based on keyword patterns across 5 archetypes. It's a useful first signal — but a real career analysis examines dozens of dimensions: <strong>your specific skills, the industries that match your values, your risk tolerance, your work environment preferences, your 5-year and 10-year arcs, your geographic constraints, your salary expectations, your learning style, your strengths gaps, your network leverage</strong>, and many more.<br><br>"Builder" or "Strategist" doesn't tell you which of 50+ careers within that orientation actually fits <em>you</em>. That's a different conversation — and a much more detailed one. This preview is the beginning, not the answer.<br><br>The full <strong>CareerGPS</strong> system goes far beyond a label. It generates a <strong>personalized 12-month career roadmap</strong> built around your specific situation — broken down month by month, with concrete actions to take, skills to build, and curated resources for each stage. Not generic advice. A step-by-step plan you can actually follow.</p>
+      </div>
+
+      <div class="next-step">
+        <div class="next-step-label">When you're ready to go deeper</div>
+        <p class="next-step-text">A category is a starting point. <em>CareerGPS</em> turns these answers into specific roles, ranked by fit, with a step-by-step roadmap built around your actual situation.</p>
+        <a href="https://whop.com/joined/careermasteryhub/" class="btn btn-primary" target="_blank" rel="noopener" style="position:relative">
+          Get the Full Analysis — $69.99
+          <span class="btn-arrow">→</span>
+        </a>
+        <div class="alt-link">
+          Prefer Gumroad? <a href="https://elimdal.gumroad.com/l/dtell" target="_blank" rel="noopener">Get CareerGPS on Gumroad →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="wrap"><div class="divider"><span class="divider-mark">§</span></div></div>
+
+<!-- PART TWO: COLD OUTREACH -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-num">03 — Part Two</div>
+
+    <div class="part-header">
+      <div class="part-num-box"><em>II</em></div>
+      <div>
+        <div class="part-meta">10 Templates · Copy & Adapt</div>
+        <h3 class="part-title">The Cold Outreach <em>Playbook</em></h3>
+        <p class="part-blurb">The application portal is dead. The inbox is alive. Every offer in 2025 came from someone who got past the keyword filter and reached a human directly. These are the messages that worked.</p>
+      </div>
+    </div>
+
+    <div class="note" style="margin-top:0;margin-bottom:48px">
+      <span class="note-label">Before you copy anything</span>
+      Replace every <span style="color:var(--gold);font-style:normal;font-family:var(--mono)">[bracket]</span> with something specific to the person you're writing. Generic outreach gets ignored. Specific outreach gets answered. Personalization is the entire game.
+    </div>
+
+    <!-- TEMPLATE 1 -->
+    <div class="template">
+      <div class="template-head">
+        <div>
+          <div class="template-id">Template 01</div>
+          <div class="template-title">The Alumni LinkedIn DM</div>
+          <div class="template-when">Use when: reaching out to graduates from your school working in your target field.</div>
+        </div>
+        <button class="copy-btn" onclick="copyText(this, 't1')">Copy</button>
+      </div>
+      <div class="template-body" id="t1">Hi <span class="bracket">[Name]</span>,
+
+I'm a current student at <span class="bracket">[your school]</span> majoring in <span class="bracket">[major]</span>. I came across your profile while researching <span class="bracket">[their company]</span> — your path from <span class="bracket">[something specific from their bio]</span> caught my attention because I'm trying to navigate something similar.
+
+I'm not asking for a job. I'd just love 15 minutes of your time to ask a few honest questions about how you got from where I am to where you are. I'll bring specific questions, respect your time, and never ask for anything beyond that conversation.
+
+Would any time in the next two weeks work?
+
+Best,
+<span class="bracket">[your name]</span></div>
+      <div class="template-why"><strong>Why this works</strong>"Not asking for a job" disarms the most common reason alumni ignore students. Specificity (their bio, your major) signals you actually looked. The 15-minute frame makes saying yes low-cost. Most alumni want to help — they just don't trust most students to respect their time.</div>
+    </div>
+
+    <!-- TEMPLATE 2 -->
+    <div class="template">
+      <div class="template-head">
+        <div>
+          <div class="template-id">Template 02</div>
+          <div class="template-title">The Recruiter Cold Email</div>
+          <div class="template-when">Use when: you've identified a specific recruiter at a company you want to join.</div>
+        </div>
+        <button class="copy-btn" onclick="copyText(this, 't2')">Copy</button>
+      </div>
+      <div class="template-body" id="t2">Subject: <span class="bracket">[Specific role title]</span> — quick question
+
+Hi <span class="bracket">[Name]</span>,
+
+I noticed <span class="bracket">[company]</span> is hiring for <span class="bracket">[role]</span>, and I've already submitted an application — but I know recruiters get hundreds of those.
+
+So instead of just hoping mine gets seen, I wanted to give you 90 seconds of context that the resume can't:
+
+— I built <span class="bracket">[specific project relevant to the role]</span> last year, which directly maps to <span class="bracket">[a responsibility in the JD]</span>.
+— I chose <span class="bracket">[company]</span> because <span class="bracket">[a specific reason — recent product, founder talk, mission, anything genuine]</span>.
+
+Happy to send a 2-minute Loom walking through the project, or jump on a quick call if it helps. Either way, thanks for reading.
+
+<span class="bracket">[your name]</span></div>
+      <div class="template-why"><strong>Why this works</strong>Acknowledges the noise problem upfront. Gives concrete, specific signal in two bullets. Offers an asymmetric next step (Loom = low effort for them, high signal). Doesn't beg.</div>
+    </div>
+
+    <!-- TEMPLATE 3 -->
+    <div class="template">
+      <div class="template-head">
+        <div>
+          <div class="template-id">Template 03</div>
+          <div class="template-title">The Hiring Manager Direct</div>
+          <div class="template-when">Use when: you've identified the actual person who would manage you, not the recruiter.</div>
+        </div>
+        <button class="copy-btn" onclick="copyText(this, 't3')">Copy</button>
+      </div>
+      <div class="template-body" id="t3">Subject: <span class="bracket">[Specific value or insight]</span> for the <span class="bracket">[team]</span> team
+
+Hi <span class="bracket">[Name]</span>,
+
+I've been following <span class="bracket">[their team / product / area]</span> and noticed <span class="bracket">[specific observation — a recent launch, a hiring trend, a public challenge]</span>.
+
+I'm graduating in <span class="bracket">[date]</span> and applying for <span class="bracket">[role]</span> on your team. Rather than send another resume into the void, I put together <span class="bracket">[a one-pager / a short doc / a Loom]</span> on <span class="bracket">[a specific problem the team likely cares about]</span>.
+
+It's not a sales pitch — it's me showing you how I think. If it's useful, great. If not, no harm done.
+
+Link: <span class="bracket">[link]</span>
+
+<span class="bracket">[your name]</span></div>
+      <div class="template-why"><strong>Why this works</strong>Treats the hiring manager like a peer, not a gatekeeper. Provides asymmetric value (a doc) before asking for anything. Frames the worst-case as zero downside, which makes opening the email feel safe.</div>
+    </div>
+
+    <!-- TEMPLATE 4 -->
+    <div class="template">
+      <div class="template-head">
+        <div>
+          <div class="template-id">Template 04</div>
+          <div class="template-title">The Coffee Chat Request</div>
+          <div class="template-when">Use when: you want to learn from someone in a role you're considering.</div>
+        </div>
+        <button class="copy-btn" onclick="copyText(this, 't4')">Copy</button>
+      </div>
+      <div class="template-body" id="t4">Hi <span class="bracket">[Name]</span>,
+
+Quick context: I'm <span class="bracket">[your year and major]</span>, and I'm seriously considering <span class="bracket">[their type of role]</span> as a path. Before I commit, I want to talk to people actually doing it — not just read job descriptions.
+
+Would you be open to 20 minutes on Zoom in the next few weeks? I'd ask you three things:
+
+1. What's the part of the job you didn't expect when you started?
+2. What kind of person actually thrives in this role?
+3. If you were starting over, what would you do differently in your final year of college?
+
+That's it. No pitch, no ask. Just trying to make a smarter decision before I make it.
+
+Thanks for considering,
+<span class="bracket">[your name]</span></div>
+      <div class="template-why"><strong>Why this works</strong>The three questions are stated upfront — no mystery, no hidden agenda. People say yes because they can already see what the conversation looks like. Also: these three questions are genuinely useful. Use them.</div>
+    </div>
+
+    <!-- TEMPLATE 5 -->
+    <div class="template">
+      <div class="template-head">
+        <div>
+          <div class="template-id">Template 05</div>
+          <div class="template-title">The Internship Inquiry</div>
+          <div class="template-when">Use when: applying to small companies or startups where the founder might read it.</div>
+        </div>
+        <button class="copy-btn" onclick="copyText(this, 't5')">Copy</button>
+      </div>
+      <div class="template-body" id="t5">Subject: Internship — would love to help with <span class="bracket">[specific area]</span>
+
+Hi <span class="bracket">[Name]</span>,
+
+I know you're not actively recruiting interns. I'm writing anyway because <span class="bracket">[company]</span> is one of the few places where I think I'd actually learn fast — and where I might actually be useful.
+
+About me in three lines:
+— Currently studying <span class="bracket">[major]</span> at <span class="bracket">[school]</span>, graduating <span class="bracket">[date]</span>.
+— Last year I <span class="bracket">[specific project or accomplishment]</span>.
+— I've been following <span class="bracket">[company]</span> since <span class="bracket">[when / why]</span>.
+
+I'd work on <span class="bracket">[specific problem you noticed they have]</span>. Paid or unpaid, full-time or part-time, in person or remote — I'm flexible. If you have 15 minutes for a call, I'd love to make a case for myself.
+
+<span class="bracket">[your name]</span>
+<span class="bracket">[link to portfolio / GitHub / writing]</span></div>
+      <div class="template-why"><strong>Why this works</strong>Acknowledges the no-formal-process reality of small companies. Three-line bio respects their time. Shows you noticed a real problem. Founders read these. Big company recruiters don't.</div>
+    </div>
+
+    <!-- TEMPLATE 6 -->
+    <div class="template">
+      <div class="template-head">
+        <div>
+          <div class="template-id">Template 06</div>
+          <div class="template-title">The Two-Week Follow-Up</div>
+          <div class="template-when">Use when: you applied or messaged and got no response. Send 10–14 days later.</div>
+        </div>
+        <button class="copy-btn" onclick="copyText(this, 't6')">Copy</button>
+      </div>
+      <div class="template-body" id="t6">Subject: Re: <span class="bracket">[original subject]</span>
+
+Hi <span class="bracket">[Name]</span>,
+
+Following up on the message below. I know inboxes are chaos this time of year — no offense if it didn't make the cut.
+
+One thing I forgot to mention last time: <span class="bracket">[a small new piece of relevant info — a recent project, a news item about their company, a small achievement]</span>.
+
+Open to chatting if there's still interest, or to hearing "not now" so I can stop checking my inbox. Either way, appreciate the time.
+
+<span class="bracket">[your name]</span></div>
+      <div class="template-why"><strong>Why this works</strong>The "stop checking my inbox" line is honest, slightly self-deprecating, and gives them permission to say no — which paradoxically makes saying yes easier. Adding a small new fact justifies the follow-up without feeling pushy.</div>
+    </div>
+
+    <!-- TEMPLATE 7 -->
+    <div class="template">
+      <div class="template-head">
+        <div>
+          <div class="template-id">Template 07</div>
+          <div class="template-title">The Polite Application Nudge</div>
+          <div class="template-when">Use when: you've applied through a portal, want to flag your application directly to a human.</div>
+        </div>
+        <button class="copy-btn" onclick="copyText(this, 't7')">Copy</button>
+      </div>
+      <div class="template-body" id="t7">Hi <span class="bracket">[Name]</span>,
+
+Just submitted an application for <span class="bracket">[role]</span> earlier today. Since I know portal applications often disappear into the abyss, I wanted to introduce myself directly.
+
+In one sentence: I'm a <span class="bracket">[year / major]</span> student who built <span class="bracket">[specific thing]</span> and chose to apply to <span class="bracket">[company]</span> because of <span class="bracket">[specific reason]</span>.
+
+Happy to share more, send a portfolio, or just stay on your radar if the timing isn't right yet.
+
+Thanks for taking a look,
+<span class="bracket">[your name]</span></div>
+      <div class="template-why"><strong>Why this works</strong>Doesn't ask for special treatment — just visibility. The "stay on your radar" close gives the recipient an easy out while keeping a door open. Recruiters appreciate this — it's professional, brief, and zero-pressure.</div>
+    </div>
+
+    <!-- TEMPLATE 8 -->
+    <div class="template">
+      <div class="template-head">
+        <div>
+          <div class="template-id">Template 08</div>
+          <div class="template-title">The Networking Event Follow-Up</div>
+          <div class="template-when">Use when: you met someone at an event and want to keep the connection alive.</div>
+        </div>
+        <button class="copy-btn" onclick="copyText(this, 't8')">Copy</button>
+      </div>
+      <div class="template-body" id="t8">Hi <span class="bracket">[Name]</span>,
+
+Great meeting you at <span class="bracket">[event]</span> — your point about <span class="bracket">[specific thing they said]</span> stuck with me.
+
+I went down a rabbit hole on it after and ended up reading <span class="bracket">[article / paper / source]</span>, which made me think about <span class="bracket">[your own take]</span>. Curious what you'd push back on.
+
+Also: if it's ever useful to grab 20 minutes and talk shop, I'd love that.
+
+<span class="bracket">[your name]</span></div>
+      <div class="template-why"><strong>Why this works</strong>Specificity ("your point about X") proves you were actually listening. Sharing what you read after shows intellectual engagement. The ask is buried at the end and easy to ignore — which is exactly why people say yes.</div>
+    </div>
+
+    <!-- TEMPLATE 9 -->
+    <div class="template">
+      <div class="template-head">
+        <div>
+          <div class="template-id">Template 09</div>
+          <div class="template-title">The Referral Request</div>
+          <div class="template-when">Use when: someone you know works at a company you want to join.</div>
+        </div>
+        <button class="copy-btn" onclick="copyText(this, 't9')">Copy</button>
+      </div>
+      <div class="template-body" id="t9">Hi <span class="bracket">[Name]</span>,
+
+Hope you're doing well — <span class="bracket">[brief personal note if you actually know them]</span>.
+
+A direct ask: I'm applying to <span class="bracket">[role]</span> at <span class="bracket">[company]</span>, and I'd be grateful if you'd be willing to refer me internally. I've attached my resume and a short note explaining why I'm a fit.
+
+Two things to make this easier:
+1. Zero pressure — if you don't feel comfortable referring me, I 100% understand.
+2. If you do, I'll write the entire referral note for you to copy/paste/edit. You wouldn't have to think about it.
+
+Either way, appreciate you reading.
+
+<span class="bracket">[your name]</span></div>
+      <div class="template-why"><strong>Why this works</strong>Most referral asks fail because they make the ask too vague and too costly. This one is specific (which role) and removes friction (you'll write the note). The "zero pressure" line preserves the relationship even if they say no.</div>
+    </div>
+
+    <!-- TEMPLATE 10 -->
+    <div class="template">
+      <div class="template-head">
+        <div>
+          <div class="template-id">Template 10</div>
+          <div class="template-title">The Post-Interview Standout</div>
+          <div class="template-when">Use when: within 24 hours of an interview. Most candidates send a generic thank-you. Don't.</div>
+        </div>
+        <button class="copy-btn" onclick="copyText(this, 't10')">Copy</button>
+      </div>
+      <div class="template-body" id="t10">Subject: Thanks — and one thought I forgot to mention
+
+Hi <span class="bracket">[Name]</span>,
+
+Genuinely enjoyed our conversation today — especially the part about <span class="bracket">[something specific they said]</span>.
+
+After we hung up, I kept thinking about <span class="bracket">[a question they asked or topic that came up]</span>. Here's the cleaner version of what I should have said:
+
+<span class="bracket">[2–3 sentences with a sharper or more thoughtful answer than what you gave in real time]</span>
+
+That said — appreciate the time and your candor. If there's anything else I can send (work samples, references, anything), happy to.
+
+<span class="bracket">[your name]</span></div>
+      <div class="template-why"><strong>Why this works</strong>While every other candidate sends "Thanks for your time! Looking forward to next steps!" — you send something that proves you've kept thinking. It's the difference between forgettable and memorable. Use it sparingly, only when you genuinely have a sharper thought.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="wrap"><div class="divider"><span class="divider-mark">§</span></div></div>
+
+<!-- CTA SECTION -->
+<section class="wrap">
+  <div class="cta-section">
+    <div class="cta-eyebrow">When you're ready for the full version</div>
+    <h2 class="cta-title">A worksheet asks the questions.<br><em>CareerGPS gives you the answers.</em></h2>
+    <p class="cta-text">This guide gets you started. But "12 questions and 10 templates" is still you doing the heavy lifting. CareerGPS turns your answers into a personalized career direction, ranked role matches, and a step-by-step roadmap — generated for you, in minutes.</p>
+
+    <div class="cta-buttons">
+      <a href="https://whop.com/joined/careermasteryhub/" class="btn btn-primary" target="_blank" rel="noopener">
+        Get CareerGPS on Whop — $69.99
+        <span class="btn-arrow">→</span>
+      </a>
+      <a href="https://whop.com/joined/careermasteryhub/" class="btn btn-secondary" target="_blank" rel="noopener">
+        See How It Works
+      </a>
+    </div>
+    <div class="alt-link" style="margin-top:24px;color:var(--text-dim)">
+      Prefer Gumroad? <a href="https://elimdal.gumroad.com/l/dtell" target="_blank" rel="noopener">Get the same product on Gumroad →</a>
+    </div>
+
+    <div class="cta-features">
+      <div class="feat">
+        <div class="feat-icon">✓</div>
+        <div class="feat-text"><strong>Personalized output</strong>Not a generic quiz — your answers, your roadmap.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">✓</div>
+        <div class="feat-text"><strong>One-time payment</strong>$69.99, lifetime access. No subscription.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">✓</div>
+        <div class="feat-text"><strong>Half the cost</strong>A single career coaching session: $150–500. CareerGPS: $69.99.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">✓</div>
+        <div class="feat-text"><strong>Built for now</strong>Designed for the 2026 job market — AI-aware, ATS-aware, reality-aware.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">Career<em>GPS</em></div>
+      <div class="footer-meta">The Standout Student Toolkit · Free Companion Guide</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function copyText(btn, id) {
+  const el = document.getElementById(id);
+  // Strip the bracket spans for clean copy
+  const text = el.innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const orig = btn.innerText;
+    btn.innerText = 'Copied ✓';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.innerText = orig;
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+
+// ==========================================
+// PREVIEW ANALYSIS — keyword pattern matching
+// ==========================================
+
+const ARCHETYPES = {
+  builder: {
+    name: 'The Builder',
+    subtitle: 'Maker · Engineer · Craftsperson',
+    tagline: 'You think with your hands. Ideas feel real to you only when they exist in the world.',
+    traits: '<strong>Builders</strong> tend to find meaning in the act of making — code, products, systems, structures, businesses. You\'re likely energized by tangible progress, frustrated by abstract conversation, and most alive when you can point to something and say "I built that."',
+    advice: 'Builder is one of the broadest orientations — it includes software engineers, product managers, hardware designers, founders, architects, mechanical engineers, and trade craftspeople. The next question is <strong>what kind</strong> of building suits you: digital or physical, fast or slow, solo or team-based.',
+    keywords: ['build', 'make', 'create', 'create', 'design', 'project', 'product', 'develop', 'code', 'launch', 'engineer', 'craft', 'construct', 'prototype', 'ship', 'invent', 'fix', 'tinker', 'hands', 'tangible']
+  },
+  analyst: {
+    name: 'The Analyst',
+    subtitle: 'Researcher · Strategist · Investigator',
+    tagline: 'You\'re drawn to the why beneath the what. Patterns find you, even when you\'re not looking for them.',
+    traits: '<strong>Analysts</strong> are wired to ask better questions, decode systems, and find the signal in the noise. You\'re likely energized by deep dives, frustrated by surface-level conversation, and most alive when complexity reveals an underlying pattern.',
+    advice: 'Analyst orientations include data scientists, researchers, investment analysts, journalists, consultants, lawyers, and academics. The next question is <strong>what kind</strong> of analysis you\'re drawn to: numbers, people, systems, or ideas — and whether you want to inform decisions or make them.',
+    keywords: ['understand', 'analyze', 'research', 'why', 'pattern', 'data', 'study', 'figure out', 'investigate', 'curious', 'question', 'theory', 'how does', 'mechanism', 'reason', 'logic', 'evidence', 'system', 'framework', 'model']
+  },
+  creator: {
+    name: 'The Creator',
+    subtitle: 'Artist · Storyteller · Voice',
+    tagline: 'You\'re moved by what hasn\'t been expressed yet. Your work is the bridge between an inner world and an outer one.',
+    traits: '<strong>Creators</strong> find meaning in expression — making something where there was nothing, giving form to feeling, shaping how others experience the world. You\'re likely energized by aesthetic decisions, frustrated by formula, and most alive when you\'ve made something that feels true.',
+    advice: 'Creator orientations span writers, designers, filmmakers, musicians, brand strategists, editors, content creators, and creative directors. The next question is <strong>what medium</strong> fits your voice — and whether you want to create independently, in a team, or for a brand.',
+    keywords: ['write', 'art', 'create', 'creative', 'design', 'story', 'express', 'voice', 'aesthetic', 'beauty', 'craft', 'imagine', 'original', 'unique', 'authentic', 'meaning', 'feel', 'emotion', 'visual', 'word']
+  },
+  connector: {
+    name: 'The Connector',
+    subtitle: 'Builder of People · Translator · Bridge',
+    tagline: 'You\'re energized by people, and they\'re energized by you. Relationships aren\'t a means to an end — they\'re where the work actually happens.',
+    traits: '<strong>Connectors</strong> are wired for collaboration, persuasion, and relationship-building. You\'re likely energized by conversation, frustrated by isolation, and most alive when you\'ve helped two people, two ideas, or two organizations find each other.',
+    advice: 'Connector orientations include sales, partnerships, business development, recruiting, community building, account management, talent agency, diplomacy, and leadership. The next question is <strong>what kind</strong> of connection: short-form (closing deals) or long-form (building communities).',
+    keywords: ['people', 'team', 'collaborate', 'help', 'community', 'relationship', 'connect', 'together', 'group', 'social', 'talk', 'communicate', 'mentor', 'lead', 'persuade', 'others', 'support', 'network', 'with', 'partner']
+  },
+  strategist: {
+    name: 'The Strategist',
+    subtitle: 'Decision-Maker · Operator · Architect of Direction',
+    tagline: 'You see the chessboard. While others are moving pieces, you\'re thinking three moves ahead.',
+    traits: '<strong>Strategists</strong> are wired for direction, prioritization, and high-stakes decision-making. You\'re likely energized by complex trade-offs, frustrated by execution-without-thinking, and most alive when you\'re shaping where something is going — not just doing it.',
+    advice: 'Strategist orientations include founders, product leaders, operations executives, venture investors, consultants, policy analysts, and chief-of-staff roles. The next question is <strong>what scale</strong> of strategy fits you: a single product, a company, an industry, or a movement.',
+    keywords: ['plan', 'strategy', 'decide', 'direction', 'priority', 'long-term', 'vision', 'goal', 'lead', 'manage', 'organize', 'optimize', 'efficient', 'scale', 'grow', 'business', 'invest', 'risk', 'future', 'choose']
+  }
+};
+
+const THEME_PHRASES = {
+  'making things': ['build', 'make', 'create', 'design', 'develop', 'craft', 'construct'],
+  'understanding systems': ['understand', 'analyze', 'figure out', 'research', 'why', 'pattern', 'how does'],
+  'expression and originality': ['write', 'art', 'creative', 'story', 'express', 'voice', 'aesthetic'],
+  'people and collaboration': ['people', 'team', 'help', 'community', 'with others', 'together', 'collaborate'],
+  'planning and direction': ['plan', 'strategy', 'long-term', 'vision', 'goal', 'direction', 'future'],
+  'autonomy and independence': ['alone', 'solo', 'independent', 'on my own', 'by myself', 'freedom', 'self-directed'],
+  'depth and mastery': ['deep', 'expert', 'master', 'specialize', 'focus', 'devote', 'dedicate'],
+  'variety and breadth': ['variety', 'different', 'multiple', 'broad', 'mix', 'diverse', 'range'],
+  'meaning and purpose': ['meaning', 'purpose', 'matter', 'impact', 'difference', 'value', 'why'],
+  'building things in the real world': ['hands', 'physical', 'tangible', 'real', 'actual', 'concrete'],
+  'energized by problem-solving': ['solve', 'fix', 'figure out', 'puzzle', 'challenge', 'problem'],
+  'drawn to teaching and explaining': ['teach', 'explain', 'mentor', 'guide', 'share', 'show others']
+};
+
+function runAnalysis() {
+  // Collect all answers
+  const inputs = document.querySelectorAll('.q-input');
+  let combined = '';
+  let answeredCount = 0;
+  inputs.forEach(input => {
+    if (input.value.trim().length > 0) {
+      combined += ' ' + input.value.toLowerCase();
+      answeredCount++;
+    }
+  });
+
+  // Require at least 3 answers
+  if (answeredCount < 3) {
+    alert('Please answer at least 3 questions to generate your preview. The more you answer, the more accurate it gets.');
+    return;
+  }
+
+  // Score archetypes
+  const scores = {};
+  Object.keys(ARCHETYPES).forEach(key => {
+    scores[key] = 0;
+    ARCHETYPES[key].keywords.forEach(kw => {
+      const regex = new RegExp('\\b' + kw + '\\b', 'gi');
+      const matches = combined.match(regex);
+      if (matches) scores[key] += matches.length;
+    });
+  });
+
+  // Find dominant archetype
+  let topKey = 'builder';
+  let topScore = 0;
+  Object.keys(scores).forEach(key => {
+    if (scores[key] > topScore) {
+      topScore = scores[key];
+      topKey = key;
+    }
+  });
+
+  // If no keywords matched, default to a balanced message
+  if (topScore === 0) {
+    // Pick based on text length / use builder as default
+    topKey = 'builder';
+  }
+
+  const archetype = ARCHETYPES[topKey];
+
+  // Identify themes (top 4)
+  const themeScores = {};
+  Object.keys(THEME_PHRASES).forEach(theme => {
+    themeScores[theme] = 0;
+    THEME_PHRASES[theme].forEach(phrase => {
+      if (combined.includes(phrase)) themeScores[theme]++;
+    });
+  });
+
+  const sortedThemes = Object.keys(themeScores)
+    .sort((a, b) => themeScores[b] - themeScores[a])
+    .filter(t => themeScores[t] > 0)
+    .slice(0, 4);
+
+  // If fewer than 2 themes detected, add generic ones
+  while (sortedThemes.length < 3) {
+    const fallbacks = ['curiosity about how things work', 'a desire for meaningful work', 'self-direction'];
+    const next = fallbacks[sortedThemes.length];
+    if (next && !sortedThemes.includes(next)) sortedThemes.push(next);
+    else break;
+  }
+
+  // Render
+  document.getElementById('archetypeName').textContent = archetype.name;
+  document.getElementById('archetypeSubtitle').textContent = archetype.subtitle;
+  document.getElementById('archetypeTagline').textContent = archetype.tagline;
+  document.getElementById('archetypeTraits').innerHTML = archetype.traits;
+  document.getElementById('archetypeAdvice').innerHTML = archetype.advice;
+
+  const themeListEl = document.getElementById('themeList');
+  themeListEl.innerHTML = sortedThemes.map((theme, i) =>
+    '<div class="theme-item"><div class="theme-num">' + (i + 1).toString().padStart(2, '0') + '</div><div class="theme-text">' + theme.charAt(0).toUpperCase() + theme.slice(1) + '</div></div>'
+  ).join('');
+
+  // Show panel
+  const panel = document.getElementById('resultPanel');
+  panel.classList.add('show');
+
+  // Smooth scroll to result
+  setTimeout(() => {
+    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+
+  // Disable button to prevent re-clicking
+  event.target.disabled = true;
+  event.target.innerHTML = 'Preview Revealed ✓';
+}
+</script>
+
+</body>
+</html>
